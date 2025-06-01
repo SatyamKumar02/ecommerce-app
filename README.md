@@ -68,3 +68,49 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+ecommerce-app/
+│
+├── public/
+├── src/
+│   ├── assets/               # Images, icons, etc.
+│   ├── components/           # Reusable UI components (e.g., Button, Modal)
+│   ├── pages/                # Route-level pages (Home, Product, Cart, etc.)
+│   ├── features/             # Features like cart, auth, products
+│   ├── hooks/                # Custom hooks
+│   ├── context/              # Context providers (e.g., AuthContext)
+│   ├── redux/                # If using Redux: actions, reducers, store
+│   ├── utils/                # Helper functions, API clients
+│   ├── App.js
+│   ├── index.js
+│   └── routes.js             # Route configuration
+├── .env
+├── package.json
+└── README.md
+
+
+🔧 Key Features to Build
+🛍️ Customer-Facing Features
+1. Product Listings – Grid with filtering, sorting (State, Props, List rendering)
+2. Product Detail Page – Dynamic routing, useParams
+3. Shopping Cart – useReducer, Context API or Redux
+4. Search – Controlled inputs, debounce, useEffect
+5. User Authentication
+	Login / Signup pages
+	Protected Routes (React Router)
+6. User Profile
+	View/update profile
+	View order history
+7. Checkout Flow
+	Forms
+	Step-by-step (multi-page routing or conditional rendering)
+
+⚙️ Admin Dashboard
+1. CRUD for Products – Forms, Modal handling
+2. Manage Orders – Display, filter, update statuses
+3. User Management – Role-based access control
+4. Analytics – Charts using libraries like Recharts or Chart.js
+5. Responsive Sidebar Navigation – Conditional layout rendering
+
