@@ -25,6 +25,8 @@ import ProductList from './pages/ProductList';
 import ProductDetail from './pages/ProductDetail';
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 
 function App() {
   return (
@@ -32,7 +34,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<ProductList />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </Router>
