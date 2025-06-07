@@ -27,17 +27,23 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import PrivateRoute from './components/PrivateRoute';
+import Login from './pages/Login';
 
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<ProductList />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>} />
       </Routes>
       <Footer />
     </Router>
