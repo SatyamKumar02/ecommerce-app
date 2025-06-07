@@ -114,3 +114,37 @@ ecommerce-app/
 4. Analytics – Charts using libraries like Recharts or Chart.js
 5. Responsive Sidebar Navigation – Conditional layout rendering
 
+ecommerce-app/
+├── public/
+│   ├── favicon.ico                  # Default favicon for the site
+│   ├── index.html                   # Main HTML template React mounts into
+│   ├── logo192.png                  # Default React logo image (can be customized)
+│   ├── logo512.png                  # Larger React logo image
+│   ├── manifest.json                # PWA manifest configuration
+│   └── robots.txt                   # Robots.txt for SEO and crawler instructions
+├── src/
+│   ├── App.jsx                     # Main app component, routes setup, and layout wrapping
+│   ├── App.css                     # Global styles and Tailwind base overrides
+│   ├── index.js                    # ReactDOM render root, imports App.jsx and wraps with Context Providers if any
+│   ├── index.css                   # Global CSS imports, Tailwind imports
+│   ├── reportWebVitals.js          # Performance measuring helper, optional
+│   ├── setupTests.js               # Jest & testing-library setup
+│   ├── components/
+│   │   ├── Header.jsx              # Fixed header with navigation, uses Bootstrap/Tailwind to freeze on top
+│   │   ├── Footer.jsx              # Footer component displayed site-wide
+│   │   └── PrivateRoute.jsx        # Route wrapper to protect private routes (e.g., checkout)
+│   ├── data/
+│   │   └── products.js             # Static product data list used for product listing and details
+│   └── pages/
+│       ├── HomePage.jsx            # Homepage with featured products or summary, uses Bootstrap/Tailwind cards/grid
+│       ├── ProductList.jsx         # Paginated product list with fixed-size Bootstrap/Tailwind cards, image sizing normalized
+│       ├── ProductDetail.jsx       # Product details page with add-to-cart functionality, Bootstrap styled
+│       ├── Cart.jsx                # Shopping cart page with item quantity and remove item, Bootstrap styling & layout
+│       ├── Checkout.jsx            # Checkout form with name, email, address inputs, Bootstrap form styling
+│       ├── Login.jsx               # Login form with email/password inputs, handles auth and redirects on success
+│       └── Analytics.jsx           # (Optional) Dashboard or page showing usage stats, sales, or user analytics
+├── package.json                   # Project dependencies, scripts, metadata
+├── tailwind.config.js             # Tailwind CSS configuration file
+├── postcss.config.js              # PostCSS config for Tailwind integration
+├── README.md                     # Project overview, setup instructions, and documentation
+└── .gitignore                    # Git ignore file to exclude node_modules, build artifacts, etc.
