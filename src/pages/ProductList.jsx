@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import products from "../data/products";
 import { Link, useSearchParams } from "react-router-dom";
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 8;
 
 const ProductList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,32 +19,41 @@ const ProductList = () => {
   const selectedProducts = products.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div className="container my-4">
+      <div className="row g-4">
         {selectedProducts.map((product) => (
-          <div key={product.id} className="border p-4 rounded shadow">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-40 object-cover mb-2"
-            />
-            <h2 className="text-lg font-bold">{product.name}</h2>
-            <p className="text-gray-600">${product.price}</p>
-            <Link to={`/product/${product.id}?page=${currentPage}`} className="text-blue-500">
-              View Details
-            </Link>
+          <div key={product.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div className="card h-100 shadow-sm">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="card-img-top"
+                style={{ height: "200px", objectFit: "cover" }}
+              />
+              <div className="card-body d-flex flex-column">
+                <h5 className="card-title">{product.name}</h5>
+                <p className="card-text text-muted">${product.price}</p>
+                <Link
+                  to={`/product/${product.id}?page=${currentPage}`}
+                  className="btn btn-primary mt-auto"
+                >
+                  View Details
+                </Link>
+              </div>
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="flex justify-center mt-6 space-x-2 flex-wrap">
+      {/* Pagination */}
+      <div className="d-flex justify-content-center mt-4 flex-wrap gap-2">
         <button
           onClick={() => {
             setCurrentPage((prev) => Math.max(prev - 1, 1));
             window.scrollTo(0, 0);
           }}
           disabled={currentPage === 1}
-          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+          className="btn btn-outline-secondary"
         >
           Prev
         </button>
@@ -56,12 +65,10 @@ const ProductList = () => {
               setCurrentPage(page);
               window.scrollTo(0, 0);
             }}
-            disabled={currentPage === page}
-            className={`px-3 py-1 rounded ${
-              currentPage === page
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200"
+            className={`btn ${
+              currentPage === page ? "btn-primary" : "btn-outline-secondary"
             }`}
+            disabled={currentPage === page}
           >
             {page}
           </button>
@@ -73,7 +80,7 @@ const ProductList = () => {
             window.scrollTo(0, 0);
           }}
           disabled={currentPage === totalPages}
-          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+          className="btn btn-outline-secondary"
         >
           Next
         </button>

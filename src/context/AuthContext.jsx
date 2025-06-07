@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = (email, password) => {
     // Mock login logic
-    if (email === "test@example.com" && password === "password") {
+    if (email === "satyam@123" && password === "1234") {
       setUser({ email });
       return true;
     }

@@ -1,38 +1,56 @@
 import React from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import products from '../data/products';
-import { useCart } from '../context/CartContext'; // ✅ import cart context
+import { useCart } from '../context/CartContext';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const { search } = useLocation();
   const navigate = useNavigate();
-  const { dispatch } = useCart(); // ✅ access dispatch from cart context
+  const { dispatch } = useCart();
 
   const product = products.find(p => p.id === id);
   const queryParams = new URLSearchParams(search);
   const page = queryParams.get("page") || 1;
 
-  if (!product) return <h2>Product Not Found</h2>;
+  if (!product) {
+    return (
+      <div className="container my-5">
+        <div className="alert alert-danger">Product Not Found</div>
+      </div>
+    );
+  }
 
   const handleAddToCart = () => {
-    console.log("Adding to cart:", product); // Add this
     dispatch({ type: 'ADD_TO_CART', payload: product });
   };
 
   return (
-    <div style={{ padding: '1rem' }}>
-      <button onClick={() => navigate(`/products?page=${page}`)}>&larr; Back</button>
-      <h2>{product.name}</h2>
-      <img src={product.image} alt={product.name} width="200" />
-      <p><strong>Price:</strong> ${product.price}</p>
-      <p>{product.description}</p>
+    <div className="container my-5">
       <button
-        onClick={handleAddToCart}
-        className="bg-blue-500 text-white px-4 py-2 mt-4"
+        className="btn btn-link mb-4"
+        onClick={() => navigate(`/products?page=${page}`)}
       >
-        Add to Cart
+        &larr; Back to Products
       </button>
+
+      <div className="row">
+        <div className="col-md-5">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="img-fluid rounded shadow-sm"
+          />
+        </div>
+        <div className="col-md-7">
+          <h2 className="mb-3">{product.name}</h2>
+          <h4 className="text-primary mb-3">${product.price}</h4>
+          <p>{product.description}</p>
+          <button className="btn btn-primary mt-3" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,3 @@
-// src/pages/Checkout.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,44 +17,63 @@ const Checkout = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(`Order placed!\nName: ${form.name}\nEmail: ${form.email}`);
-    // Optionally reset cart or navigate
-    navigate('/');
+    navigate('/home');
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl mb-4">Checkout</h2>
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
-        <input
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="Name"
-          required
-          className="w-full p-2 border"
-        />
-        <input
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
-          className="w-full p-2 border"
-        />
-        <textarea
-          name="address"
-          value={form.address}
-          onChange={handleChange}
-          placeholder="Address"
-          required
-          className="w-full p-2 border"
-        />
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2">
-          Place Order
-        </button>
-      </form>
+    <div className="container mt-5" style={{ maxWidth: '600px' }}>
+      <div className="card shadow">
+        <div className="card-body">
+          <h2 className="card-title text-center mb-4">Checkout</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Enter your name"
+                required
+                className="form-control"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
+                required
+                className="form-control"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="address" className="form-label">Address</label>
+              <textarea
+                name="address"
+                id="address"
+                value={form.address}
+                onChange={handleChange}
+                placeholder="Enter your address"
+                required
+                className="form-control"
+                rows={4}
+              ></textarea>
+            </div>
+
+            <button type="submit" className="btn btn-success w-100">
+              Place Order
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
