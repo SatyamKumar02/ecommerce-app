@@ -23,6 +23,7 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     dispatch({ type: 'ADD_TO_CART', payload: product });
+    alert(`${product.name} added to cart successfully!`);
   };
 
   return (
